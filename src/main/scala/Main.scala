@@ -30,6 +30,12 @@ object EjsScala{
   @params Toma como argumento un N >0
   @returns Una lista de enteros de N hasta 1
   */
+  def countdown(i: Int) : List[Int] =
+  i match{
+    //case i<=0 => List()
+    case i if i<=0 => List()
+    case _ => List(i, countdown(i-1))
+  }
 
   def main(args: Array[String]): Unit = {
     println(firstp[Char]('a', List('a', 'b', 'c')))
@@ -37,5 +43,9 @@ object EjsScala{
 
     println(duplicar[Char](List('a')))
     println(duplicar[Char](List('a', 'b', 'c')))
+
+    println(countdown(10))
+    println(countdown(-1))
+
   }
 }
