@@ -26,6 +26,11 @@ object EjsScala{
       case head::tail => head::head::duplicar(tail)
   }
 
+  /*
+  @params Toma como argumento un N >0
+  @returns Una lista de enteros de N hasta 1
+  */
+
   def main(args: Array[String]): Unit = {
     println(firstp[Char]('a', List('a', 'b', 'c')))
     // println(firstp[String]("martes", List("lunes", "martes", "miercoles")))
