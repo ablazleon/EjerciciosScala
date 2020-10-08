@@ -1,0 +1,36 @@
+import java.util.NoSuchElementException
+
+object EjsScala{
+
+  /*
+    Devuelve true si el primer argumento es igual al primer elemento del segundo argumento
+    @returns Boolean
+   */
+  def firstp[Objeto](x: Objeto, y: List[Objeto]): Boolean =
+    (x, y) match {
+      case (x, z::tail) if (x==z) => true
+      case (x, z::Nil) if x==z => true
+      case (x, _) if x == Nil => false
+      case (_, Nil) => throw new NoSuchElementException()
+  }
+
+  /*
+     @returns Devuelve una lista cuyos elementos son lista de dos elementos
+   */
+
+  def duplicar[Objeto](ls: List[Objeto]): List[Objeto] =
+    ls match {
+      // case ls.isEmpty() => Nil Por qué así se la pega?
+      case ls if ls.isEmpty => Nil
+      // case head::tail => List(head, head)::duplicar(tail)
+      case head::tail => head::head::duplicar(tail)
+  }
+
+  def main(args: Array[String]): Unit = {
+    println(firstp[Char]('a', List('a', 'b', 'c')))
+    // println(firstp[String]("martes", List("lunes", "martes", "miercoles")))
+
+    println(duplicar[Char](List('a')))
+    println(duplicar[Char](List('a', 'b', 'c')))
+  }
+}
