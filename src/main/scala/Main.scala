@@ -34,7 +34,7 @@ object EjsScala{
   i match{
     //case i<=0 => List()
     case i if i<=0 => List()
-    case _ => List(i, countdown(i-1))
+    case _ => i::countdown(i-1)
   }
 
   def main(args: Array[String]): Unit = {
