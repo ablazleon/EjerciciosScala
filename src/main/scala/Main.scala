@@ -37,6 +37,18 @@ object EjsScala{
     case _ => i::countdown(i-1)
   }
 
+  /*
+  @params Toma como argumento una lista
+  @returns devuelve la lista invertida
+  */
+  def reverso[Objeto](ls: List[Objeto]) : List[Objeto] =
+    ls match {
+      case Nil => Nil
+      case head::tail if tail.isEmpty => ls
+      case head::tail => reverso(tail)+:head
+    }
+
+
   def main(args: Array[String]): Unit = {
     println(firstp[Char]('a', List('a', 'b', 'c')))
     // println(firstp[String]("martes", List("lunes", "martes", "miercoles")))
