@@ -86,6 +86,17 @@ object EjsScala{
       case (_::tailA,_) => isContained(tailA, B)
     }
 
+  /*
+  @params toma como argumento una lista
+  @returns devuelve una lista formada por los elementos en las posiciones impares de la lista original
+  */
+  def impares[Objeto](A: List[Objeto]) : List[Objeto] =
+    A match {
+      case Nil => Nil
+      case _::Nil => A
+      case head::_::Nil => List(head)
+      case head::_::tail => List(head):::impares(tail)
+    }
 
 
   def main(args: Array[String]): Unit = {
@@ -125,5 +136,10 @@ object EjsScala{
     println(setequal(List(1, 2, 3), List(1, 2)))
     println("setequal(List('a', 1), List(1, 'a'))")
     println(setequal(List('a', 1), List(1, 'a')))
+
+    println("7. impares")
+    println(impares(List(1)))
+    println(impares(List(1, 2, 3, 4, 5, 6)))
+
   }
 }
