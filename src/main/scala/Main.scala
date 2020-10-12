@@ -1,5 +1,5 @@
 import java.util.NoSuchElementException
-
+// Author: Adrián Blázquez León
 
 object EjsScala{
 

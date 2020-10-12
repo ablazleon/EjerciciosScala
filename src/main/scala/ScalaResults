@@ -1,0 +1,35 @@
+Adrián Blázquez León
+
+1. firstp
+firstp('a', List('a', 'b', 'c'))
+true
+2. duplicar
+duplicar[Char](List('a'))
+List(a, a)
+duplicar[Char](List('a', 'b', 'c'))
+List(a, a, b, b, c, c)
+3. countdown
+countdown(10)
+List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+countdown(-1)
+List()
+4. reverse
+reverso(List(1,2,3))
+List(3, 2, 1)
+5. substitute
+substitute('a', 'b', List('a', 'b', 'c'))
+List(a, a, c)
+substitute('a', 'd', List('a', 'b', 'c'))
+List(a, b, c)
+6. setequal
+setequal(List(1, 1, 2), List(1, 2))
+true
+setequal(List(1, 2), List(1, 2, 3))
+false
+setequal(List(1, 2, 3), List(1, 2))
+false
+setequal(List('a', 1), List(1, 'a'))
+true
+7. impares
+List(1)
+List(1, 3, 5)
