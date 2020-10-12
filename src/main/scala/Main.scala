@@ -1,5 +1,6 @@
 import java.util.NoSuchElementException
 
+
 object EjsScala{
 
   /*
@@ -48,31 +49,46 @@ object EjsScala{
       case head::tail => reverso(tail):::List(head)
     }
 
-///*
-//@params Toma como argumento una lista ls y dos isntances x e y
-//@returns devuelve una lista en la que todas las apareiciones del elemento y se sustituyen por una x
-//*/
-//  def substitute[Objeto](ls: List[Objeto], x: Objeto, y: Objeto) : List[Objeto] =
-//    ls match {
-//      case Nil => Nil
-//      case ls if x == Nil => ls
-//      case ls if y == Nil => ls
-//      case head::tail if head == y => x::substitute(tail)
-//      case head::tail => head::substitute(tail)
-//    }
+/*
+@params Toma como argumento una lista ls y dos isntances x e y
+@returns devuelve una lista en la que todas las apareiciones del elemento y se sustituyen por una x
+*/
+  def substitute[Objeto](x: Objeto, y: Objeto, ls: List[Objeto]) : List[Objeto] =
+    (x, y, ls) match {
+      case (_, _,Nil) => ls
+      case (Nil,_,_) => ls
+      case (_,Nil,_) => ls
+      case (x, y, head::tail) if (head == y) => List(x):::substitute(x, y, tail)
+      case (_, _, head::tail) => List(head):::substitute(x, y, tail)
+    }
 
 
   def main(args: Array[String]): Unit = {
-    println(firstp[Char]('a', List('a', 'b', 'c')))
+    println("1. firstp")
+    println("firstp('a', List('a', 'b', 'c'))")
+    println(firstp('a', List('a', 'b', 'c')))
     // println(firstp[String]("martes", List("lunes", "martes", "miercoles")))
 
+    println("2. duplicar")
+    println("duplicar[Char](List('a'))")
     println(duplicar[Char](List('a')))
+    println("duplicar[Char](List('a', 'b', 'c'))")
     println(duplicar[Char](List('a', 'b', 'c')))
 
+    println("3. countdown")
+    println("countdown(10)")
     println(countdown(10))
+    println("countdown(-1)")
     println(countdown(-1))
 
+    println("4. reverse")
+    println("reverso(List(1,2,3))")
+    println(reverso(List(1,2,3)))
 
-
+    println("5. substitute")
+    println("substitute('a', 'b', List('a', 'b', 'c'))")
+    println(substitute('a', 'b', List('a', 'b', 'c')))
+    println("substitute('a', 'd', List('a', 'b', 'c'))")
+    println(substitute('a', 'd', List('a', 'b', 'c')))
   }
 }
