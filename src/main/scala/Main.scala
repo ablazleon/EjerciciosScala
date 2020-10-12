@@ -63,6 +63,31 @@ object EjsScala{
     }
 
 
+
+  /*
+ @params toma como argumento dos listas
+ @returns devuelve true si todos los elementos de una lista son las del otro y viceversa
+ */
+  def setequal[Objeto](A: List[Objeto], B: List[Objeto]) : Boolean =
+    (A, B) match {
+      case (_,Nil) => true
+      case (Nil,_) => true
+      case (A, B) if isContained(A, B) => isContained(B, A)
+      case (_,_) => false // No está contenido A en B
+    }
+
+  /*
+  @params toma como argumento dos listas
+  @returns devuelve true si todos los elementos de una lista son las del otro
+  */
+  def isContained[Objeto](A: List[Objeto], B: List[Objeto]) : Boolean =
+    (A, B) match {
+      case (headA::tailA, _) if tailA.isEmpty => B.contains(headA)
+      case (_::tailA,_) => isContained(tailA, B)
+    }
+
+
+
   def main(args: Array[String]): Unit = {
     println("1. firstp")
     println("firstp('a', List('a', 'b', 'c'))")
@@ -90,5 +115,15 @@ object EjsScala{
     println(substitute('a', 'b', List('a', 'b', 'c')))
     println("substitute('a', 'd', List('a', 'b', 'c'))")
     println(substitute('a', 'd', List('a', 'b', 'c')))
+
+    println("6. setequal")
+    println("setequal(List(1, 1, 2), List(1, 2))")
+    println(setequal(List(1, 1, 2), List(1, 2)))
+    println("setequal(List(1, 2), List(1, 2, 3))")
+    println(setequal(List(1, 2), List(1, 2, 3)))
+    println("setequal(List(1, 2, 3), List(1, 2))")
+    println(setequal(List(1, 2, 3), List(1, 2)))
+    println("setequal(List('a', 1), List(1, 'a'))")
+    println(setequal(List('a', 1), List(1, 'a')))
   }
 }
