@@ -138,7 +138,9 @@ object EjsScala{
     println(setequal(List('a', 1), List(1, 'a')))
 
     println("7. impares")
+    println("impares(List(1))")
     println(impares(List(1)))
+    println("impares(List(1, 2, 3, 4, 5, 6))")
     println(impares(List(1, 2, 3, 4, 5, 6)))
 
   }
