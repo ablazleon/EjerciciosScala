@@ -45,8 +45,21 @@ object EjsScala{
     ls match {
       case Nil => Nil
       case head::tail if tail.isEmpty => ls
-      case head::tail => reverso(tail)+:head
+      case head::tail => reverso(tail):::List(head)
     }
+
+///*
+//@params Toma como argumento una lista ls y dos isntances x e y
+//@returns devuelve una lista en la que todas las apareiciones del elemento y se sustituyen por una x
+//*/
+//  def substitute[Objeto](ls: List[Objeto], x: Objeto, y: Objeto) : List[Objeto] =
+//    ls match {
+//      case Nil => Nil
+//      case ls if x == Nil => ls
+//      case ls if y == Nil => ls
+//      case head::tail if head == y => x::substitute(tail)
+//      case head::tail => head::substitute(tail)
+//    }
 
 
   def main(args: Array[String]): Unit = {
@@ -58,6 +71,8 @@ object EjsScala{
 
     println(countdown(10))
     println(countdown(-1))
+
+
 
   }
 }
