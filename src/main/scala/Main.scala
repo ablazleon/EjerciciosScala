@@ -19,12 +19,12 @@ object EjsScala{
      @returns Devuelve una lista cuyos elementos son lista de dos elementos
    */
 
-  def duplicar[Objeto](ls: List[Objeto]): List[Objeto] =
+  def duplicar(ls: List[Any]): List[Any] =
     ls match {
       // case ls.isEmpty() => Nil Por qué así se la pega?
       case ls if ls.isEmpty => Nil
       // case head::tail => List(head, head)::duplicar(tail)
-      case head::tail => head::head::duplicar(tail)
+      case _ => ls.map(a => List(a,a))
   }
 
   /*
@@ -107,9 +107,9 @@ object EjsScala{
 
     println("2. duplicar")
     println("duplicar[Char](List('a'))")
-    println(duplicar[Char](List('a')))
+    println(duplicar(List('a')))
     println("duplicar[Char](List('a', 'b', 'c'))")
-    println(duplicar[Char](List('a', 'b', 'c')))
+    println(duplicar(List('a', 'b', 'c')))
 
     println("3. countdown")
     println("countdown(10)")
