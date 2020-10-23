@@ -7,13 +7,13 @@ object EjsScala{
     Devuelve true si el primer argumento es igual al primer elemento del segundo argumento
     @returns Boolean
    */
-  def firstp[Objeto](x: Objeto, y: List[Objeto]): Boolean =
-    (x, y) match {
-      case (x, z::tail) if (x==z) => true
-      case (x, z::Nil) if x==z => true
-      case (x, _) if x == Nil => false
-      case (_, Nil) => throw new NoSuchElementException()
-  }
+  def firstp[Any](x: Any, y: List[Any]): Boolean =
+    (x) match {
+      case x if x == y.head => true
+      case _ => false
+    }
+
+
 
   /*
      @returns Devuelve una lista cuyos elementos son lista de dos elementos
@@ -34,7 +34,7 @@ object EjsScala{
   def countdown(i: Int) : List[Int] =
   i match{
     //case i<=0 => List()
-    case i if i<=0 => List()
+    case i if i<0 => List()
     case _ => i::countdown(i-1)
   }
 
@@ -42,7 +42,7 @@ object EjsScala{
   @params Toma como argumento una lista
   @returns devuelve la lista invertida
   */
-  def reverso[Objeto](ls: List[Objeto]) : List[Objeto] =
+  def reverso[Any](ls: List[Any]) : List[Any] =
     ls match {
       case Nil => Nil
       case head::tail if tail.isEmpty => ls
@@ -53,7 +53,7 @@ object EjsScala{
 @params Toma como argumento una lista ls y dos isntances x e y
 @returns devuelve una lista en la que todas las apareiciones del elemento y se sustituyen por una x
 */
-  def substitute[Objeto](x: Objeto, y: Objeto, ls: List[Objeto]) : List[Objeto] =
+  def substitute[Any](x: Any, y: Any, ls: List[Any]) : List[Any] =
     (x, y, ls) match {
       case (_, _,Nil) => ls
       case (Nil,_,_) => ls
@@ -68,7 +68,7 @@ object EjsScala{
  @params toma como argumento dos listas
  @returns devuelve true si todos los elementos de una lista son las del otro y viceversa
  */
-  def setequal[Objeto](A: List[Objeto], B: List[Objeto]) : Boolean =
+  def setequal[Any](A: List[Any], B: List[Any]) : Boolean =
     (A, B) match {
       case (_,Nil) => true
       case (Nil,_) => true
@@ -80,7 +80,7 @@ object EjsScala{
   @params toma como argumento dos listas
   @returns devuelve true si todos los elementos de una lista son las del otro
   */
-  def isContained[Objeto](A: List[Objeto], B: List[Objeto]) : Boolean =
+  def isContained[Any](A: List[Any], B: List[Any]) : Boolean =
     (A, B) match {
       case (headA::tailA, _) if tailA.isEmpty => B.contains(headA)
       case (_::tailA,_) => isContained(tailA, B)
@@ -90,7 +90,7 @@ object EjsScala{
   @params toma como argumento una lista
   @returns devuelve una lista formada por los elementos en las posiciones impares de la lista original
   */
-  def impares[Objeto](A: List[Objeto]) : List[Objeto] =
+  def impares[Any](A: List[Any]) : List[Any] =
     A match {
       case Nil => Nil
       case _::Nil => A
@@ -103,12 +103,13 @@ object EjsScala{
     println("1. firstp")
     println("firstp('a', List('a', 'b', 'c'))")
     println(firstp('a', List('a', 'b', 'c')))
-    // println(firstp[String]("martes", List("lunes", "martes", "miercoles")))
+    println("firstp(martes, List(lunes, martes, miercoles))")
+    println(firstp("martes", List("lunes", "martes", "miercoles")))
 
     println("2. duplicar")
-    println("duplicar[Char](List('a'))")
+    println("duplicar(List('a'))")
     println(duplicar(List('a')))
-    println("duplicar[Char](List('a', 'b', 'c'))")
+    println("duplicar(List('a', 'b', 'c'))")
     println(duplicar(List('a', 'b', 'c')))
 
     println("3. countdown")
