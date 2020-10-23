@@ -1,16 +1,16 @@
-Adrián Blázquez León
-
 1. firstp
 firstp('a', List('a', 'b', 'c'))
 true
+firstp(martes, List(lunes, martes, miercoles))
+false
 2. duplicar
-duplicar[Char](List('a'))
-List(a, a)
-duplicar[Char](List('a', 'b', 'c'))
-List(a, a, b, b, c, c)
+duplicar(List('a'))
+List(List(a, a))
+duplicar(List('a', 'b', 'c'))
+List(List(a, a), List(b, b), List(c, c))
 3. countdown
 countdown(10)
-List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 countdown(-1)
 List()
 4. reverse
@@ -31,5 +31,9 @@ false
 setequal(List('a', 1), List(1, 'a'))
 true
 7. impares
+impares(List(1))
 List(1)
+impares(List(1, 2, 3, 4, 5, 6))
 List(1, 3, 5)
+
+Process finished with exit code 0
