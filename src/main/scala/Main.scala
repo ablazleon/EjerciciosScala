@@ -82,8 +82,9 @@ object EjsScala{
   */
   def isContained[Any](A: List[Any], B: List[Any]) : Boolean =
     (A, B) match {
-      case (headA::tailA, _) if tailA.isEmpty => B.contains(headA)
-      case (_::tailA,_) => isContained(tailA, B)
+      case (Nil,_) => true
+      case (A, _) if B.contains(A.head) => isContained(A.tail,B)
+      case (_,_) => false
     }
 
   /*
